@@ -1,0 +1,61 @@
+/* --- Variables de Diseño --- */
+:root {
+    --font-elegant: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+    --color-bg: #FFFFFF;
+    --color-text: #333;
+    --color-primary: #8B7355; /* Un tono oro viejo / champagne */
+    --color-dark: #2a2a2a;
+}
+
+#contador h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    color: var(--color-primary);
+}
+
+body{
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background: #f9f4ef;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    padding: 15px;
+    background: #f9f4ef;
+    font-size: 0.9rem;
+    color: var(--color-text);
+}
+
+/* Contador Regresivo */
+
+.contador-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+.contador-box {
+    border: 2px solid var(--color-primary);
+    padding: 20px 30px;
+    border-radius: 8px;
+    background: #fdfdfd;
+}
+.contador-box span {
+    font-family: var(--font-elegant);
+    font-size: 3rem;
+    display: block;
+    color: var(--color-dark);
+}
+.contador-box p {
+    margin: 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
