@@ -1,61 +1,273 @@
 /* --- Variables de Diseño --- */
 :root {
-    --font-elegant: 'Playfair Display', serif;
-    --font-body: 'Lato', sans-serif;
-    --color-bg: #FFFFFF;
-    --color-text: #333;
-    --color-primary: #8B7355; /* Un tono oro viejo / champagne */
-    --color-dark: #2a2a2a;
+  --font-elegant: "Playfair Display", serif;
+  --font-body: "Lato", sans-serif;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f3ebe0;
+  --color-envelope-left: #dbc4a3;
+  --color-envelope-right: #eadbc8;
+  --color-envelope-flap: #cdac7e;
+  --color-text: #333;
+  --color-primary: #8b7355; /* Un tono oro viejo / champagne */
+  --color-dark: #2a2a2a;
 }
 
 #contador h2 {
-    text-align: center;
-    font-size: 2.8rem;
-    margin-bottom: 30px;
-    color: var(--color-primary);
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  color: var(--color-primary);
 }
 
-body{
-    margin: 0;
+body {
+  margin: 0;
 }
 
 header {
-    text-align: center;
-    padding: 20px;
-    background: #f9f4ef;
+  text-align: center;
+  padding: 20px;
+  background: #f9f4ef;
 }
 
 footer {
-    margin-top: 20px;
-    text-align: center;
-    padding: 15px;
-    background: #f9f4ef;
-    font-size: 0.9rem;
-    color: var(--color-text);
+  margin-top: 20px;
+  text-align: center;
+  padding: 15px;
+  background: #f9f4ef;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+#principal {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+  min-width: 200px;
+  position: relative;
+  margin-bottom: 15vh;
+}
+
+/* Invitaciones */
+#invitations {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  display: flex;
+  grid-auto-flow: 20px;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+  z-index: 2;
+}
+
+#invitations.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#invitations > div {
+  flex: 1;
+  position: relative;
+  text-align: center;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-text);
+  margin: 4vw;
+}
+
+#invitations img {
+  width: 40vw;
+}
+
+#heteres img:first-of-type {
+  transform: scaleY(-1); /* voltear imagen de tulipanes */
+}
+
+#heteres img:last-child {
+  position: absolute;
+  bottom: 0; /* poner la imagen de abajo hasta abajo del div */
+  left: 0;
+}
+
+.texto {
+  /* centrar texto por encima de las imagenes */
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1 {
+  /* letras cursivas para los nombres */
+  font-family: "Brush Script MT", cursive;
+  font-size: 4em;
+  color: var(--color-primary);
 }
 
 /* Contador Regresivo */
 
 .contador-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
 }
 .contador-box {
-    border: 2px solid var(--color-primary);
-    padding: 20px 30px;
-    border-radius: 8px;
-    background: #fdfdfd;
+  border: 2px solid var(--color-primary);
+  padding: 20px 30px;
+  border-radius: 8px;
+  background: #fdfdfd;
 }
 .contador-box span {
-    font-family: var(--font-elegant);
-    font-size: 3rem;
-    display: block;
-    color: var(--color-dark);
+  font-family: var(--font-elegant);
+  font-size: 3rem;
+  display: block;
+  color: var(--color-dark);
 }
 .contador-box p {
-    margin: 0;
-    font-size: 0.9rem;
-    text-transform: uppercase;
+  margin: 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Sobre animado */
+.envelope {
+  /* contenedor del sobre centrado*/
+  width: 60vw;
+  height: 50vh;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 1000px;
+  background: var(--color-bg-secondary);
+  border-radius: 0 0 10px 10px;
+  transform-style: preserve-3d;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 1;
+}
+
+/* clase para ocultar el sobre */
+.envelope.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* papel que se asoma del sobre al hacer hover*/
+.msg {
+  bottom: 0;
+  width: 80%;
+  height: 80%;
+  color: var(--color-text);
+  transition: 0.5s;
+  position: absolute;
+  text-align: center;
+  border-radius: 5px;
+  background: var(--color-bg);
+}
+
+/* 'texto' en el papel que se asoma al hacer hover en el sobre */
+.msg::before,
+.msg::after {
+  content: "";
+  left: 5%;
+  height: 10px;
+  position: absolute;
+  border-radius: 50px;
+  background: #cbcbcb;
+}
+
+.msg::before {
+  top: 15%;
+  width: 42%;
+}
+
+.msg::after {
+  top: 40%;
+  width: 50%;
+}
+
+/* agregar sombras a los lados del sobre */
+.left-part,
+.right-part {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  bottom: 0%;
+  filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
+}
+
+/* agregar bordes redondeados al sobre entero*/
+.left-part::before,
+.right-part::before,
+.top-part::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 0 10px 10px;
+}
+
+/* dar forma de triangulo y color a la parte izquierda del sobre */
+.left-part::before {
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+  background: var(--color-envelope-left);
+}
+
+/* dar forma de triangulo y color a la parte derecha del sobre*/
+.right-part::before {
+  background: var(--color-envelope-right);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+/* agregar sombras y animaciones a la parte de arriba del sobre */
+.top-part {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  transition: 1s 0.2s;
+  transform-origin: top;
+  transform: rotateX(1deg);
+  filter: drop-shadow(0px 1px 1px rgb(0, 0, 0, 0.8));
+}
+
+/* dar forma de triangulo y color a la parte de arriba del sobre*/
+.top-part::before {
+  clip-path: polygon(0 0, 100% 0, 50% 100%, 0 0);
+  background: var(--color-envelope-flap);
+}
+
+/* elevar un poco el papel que se asoma en el sobre al hacer hover*/
+.envelope:hover .msg {
+  transform: translateY(-50px);
+  transition: 1.5s 0.2s !important;
+  z-index: 3;
+}
+
+/* animacion para 'abrir' la parte de arriba del sobre al hacer hover */
+.envelope:hover .top-part {
+  transform: rotateX(190deg);
+  transition: 0.5s !important;
+  filter: none;
+}
+
+/* animacion para 'abrir' la parte de arriba del sobre al hacer click */
+.envelope.open .top-part {
+  transform: rotateX(190deg);
+  transition: 0.8s !important;
+  filter: none;
+}
+
+/* animacion para que el papel adentro del sobre se asome al hacer click */
+.envelope.open .msg {
+  transform: translateY(-50px);
+  transition: translateY(-50px);
+  transition: 1s 0.2s !important;
+  z-index: 3;
 }
