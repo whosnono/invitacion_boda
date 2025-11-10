@@ -402,3 +402,115 @@ h1 {
     font-size: 0.8rem;
   }
 }
+
+/* ================================================================
+   SECCIÓN "FORMULARIO" - INICIO
+   Estructura responsive (mobile-first)
+================================================================ */
+
+/* Fondo general de la sección */
+#formulario {
+  background-color: var(--color-primary);
+  padding: 2rem 0;
+}
+
+#formulario h2 {
+  text-align: center;
+  margin: 2rem;
+  font-size: 1.4rem;
+}
+
+/* Contenedor principal (en columna por defecto para móvil) */
+#formulario .contenedor {
+  display: flex;
+  flex-direction: column; /* Layout vertical por defecto */
+  background-color: white;
+  margin: 0 10%; /* Margen lateral moderado en pantallas pequeñas */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#formulario .contenedor > div:first-child {
+  padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+#formulario .contenedor > div:last-child {
+  padding: 0rem 1.5rem 1.5rem 1.5rem;
+}
+
+/* Imagen en versión móvil */
+#formulario img {
+  width: 100%;
+  height: 250px; /* Altura visual fija */
+  object-fit: contain; /* Se muestra completa sin deformarse */
+  margin: 0 auto; /* Centrada horizontalmente */
+}
+
+/* Estructura del formulario */
+#rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Estilos de texto */
+#rsvp-form label {
+  font-weight: 600;
+}
+
+/* Campos del formulario */
+#rsvp-form input,
+#rsvp-form select,
+#rsvp-form button {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Botón principal */
+#rsvp-form button {
+  background-color: #2a2a2a;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#rsvp-form button:hover {
+  background-color: #444;
+}
+
+@media (min-width: 768px) {
+  /* Contenedor horizontal: imagen y formulario lado a lado */
+  #formulario .contenedor {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* Centra verticalmente ambos lados */
+    margin: 0 20%; /* Margen lateral más grande en escritorio */
+    padding: 1rem 2rem;
+  }
+
+  /* Cada bloque ocupa la mitad del ancho */
+  #formulario .contenedor > div {
+    flex: 1;
+  }
+
+  /* Imagen adaptada a la altura del contenedor sin recortarse */
+  #formulario img {
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Centrar verticalmente el formulario */
+  #formulario .contenedor > div:last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* ================================================================
+   SECCIÓN "FORMULARIO" - FIN
+================================================================ */
