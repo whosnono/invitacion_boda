@@ -1,5 +1,6 @@
 /* --- Variables de Diseño --- */
 :root {
+  --font-title: "Brush Script MT", cursive;
   --font-elegant: "Playfair Display", serif;
   --font-body: "Lato", sans-serif;
   --color-bg: #ffffff;
@@ -45,7 +46,7 @@ footer {
   align-items: center;
   min-width: 200px;
   position: relative;
-  margin-bottom: 15vh;
+  margin-bottom: 20vh;
 }
 
 /* Invitaciones */
@@ -55,7 +56,7 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%) scale(0.1);
   display: flex;
-  grid-auto-flow: 20px;
+  gap: 20px;
   opacity: 0;
   transition: all 1s ease-in-out;
   z-index: 2;
@@ -71,12 +72,25 @@ footer {
   position: relative;
   text-align: center;
   background-color: var(--color-bg-secondary);
-  border: 1px solid var(--color-text);
+  border: 2px solid var(--color-primary);
   margin: 4vw;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#invitations > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(139, 115, 85, 0.3);
 }
 
 #invitations img {
   width: 40vw;
+}
+
+#heteres {
+  position: relative;
 }
 
 #heteres img:first-of-type {
@@ -87,21 +101,44 @@ footer {
   position: absolute;
   bottom: 0; /* poner la imagen de abajo hasta abajo del div */
   left: 0;
+  width: 100%;
 }
 
 .texto {
   /* centrar texto por encima de las imagenes */
   position: absolute;
-  top: 35%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 4;
+  /*fondo semitransparente*/
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px 30px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(139, 115, 85, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 400px;
 }
 
 h1 {
   /* letras cursivas para los nombres */
-  font-family: "Brush Script MT", cursive;
-  font-size: 4em;
+  font-family: var(--font-title);
+  font-size: 3.5em;
   color: var(--color-primary);
+  margin-bottom: 15px;
+  font-weight: normal;
+  line-height: 1.1;
+}
+
+.texto p {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--color-dark);
+  margin: 8px 0;
+  line-height: 1.4;
+  font-weight: 300;
 }
 
 /* Contador Regresivo */
@@ -270,4 +307,98 @@ h1 {
   transition: translateY(-50px);
   transition: 1s 0.2s !important;
   z-index: 3;
+}
+
+@media (max-width: 1200px) {
+  .envelope {
+    width: 70vw;
+    height: 45vh;
+  }
+
+  #invitations > div {
+    margin: 3vw;
+  }
+}
+
+@media (max-width: 768px) {
+  #principal {
+    margin-bottom: 20vh;
+  }
+
+  .envelope {
+    width: 85vw;
+    height: 40vh;
+  }
+
+  #invitations {
+    flex-direction: column;
+    gap: 15px;
+    top: 50%;
+  }
+
+  #invitations > div {
+    margin: 2vw;
+    width: 80vw;
+  }
+
+  #invitations img {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  .contador-container {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .contador-box {
+    padding: 15px 20px;
+  }
+
+  .contador-box span {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h2 {
+    font-size: 1.5rem;
+  }
+
+  header h3 {
+    font-size: 1.2rem;
+  }
+
+  .envelope {
+    width: 90vw;
+    height: 35vh;
+  }
+
+  #invitations > div {
+    width: 85vw;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  .texto {
+    top: 40%;
+  }
+
+  .contador-box {
+    padding: 10px 15px;
+    min-width: 70px;
+  }
+
+  .contador-box span {
+    font-size: 2rem;
+  }
+
+  .contador-box p {
+    font-size: 0.8rem;
+  }
 }
