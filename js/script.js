@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // sobre animado
 var envelope = document.getElementById("envelope");
 var invitations = document.getElementById("invitations");
+var container = document.getElementById("principal");
 
 envelope.addEventListener("click", () => {
   // abrir sobre
@@ -53,6 +54,7 @@ envelope.addEventListener("click", () => {
   //esperar antes de mostrar invitaciones
   setTimeout(() => {
     invitations.classList.add("show");
+    principal.classList.add("extend");
 
     //esperar antes de ocultar sobre
     setTimeout(() => {

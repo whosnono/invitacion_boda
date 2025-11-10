@@ -20,6 +20,10 @@
   color: var(--color-primary);
 }
 
+#contador {
+  margin-bottom: 30px;
+}
+
 body {
   margin: 0;
 }
@@ -87,10 +91,6 @@ footer {
 
 #invitations img {
   width: 40vw;
-}
-
-#heteres {
-  position: relative;
 }
 
 #heteres img:first-of-type {
@@ -322,7 +322,11 @@ h1 {
 
 @media (max-width: 768px) {
   #principal {
-    margin-bottom: 20vh;
+    transition: height 0.2s ease;
+  }
+
+  #principal.extend {
+    height: 200vh;
   }
 
   .envelope {
@@ -333,12 +337,13 @@ h1 {
   #invitations {
     flex-direction: column;
     gap: 15px;
-    top: 50%;
   }
 
-  #invitations > div {
+  .invitation {
     margin: 2vw;
     width: 80vw;
+    min-height: 100vh;
+    align-self: stretch;
   }
 
   #invitations img {
@@ -376,8 +381,12 @@ h1 {
     width: 90vw;
     height: 35vh;
   }
+  #principal {
+    margin: 0 0 15vh 0;
+  }
 
   #invitations > div {
+    padding: 10vh 0;
     width: 85vw;
   }
 
