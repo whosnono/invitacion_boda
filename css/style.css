@@ -12,26 +12,8 @@
   --color-primary: #8b7355; /* Un tono oro viejo / champagne */
   --color-dark: #2a2a2a;
 }
-
-#contador h2 {
-  text-align: center;
-  font-size: 2.8rem;
-  margin-bottom: 30px;
-  color: var(--color-primary);
-}
-
-#contador {
-  margin-bottom: 30px;
-}
-
 body {
   margin: 0;
-}
-
-header {
-  text-align: center;
-  padding: 20px;
-  background: #f9f4ef;
 }
 
 footer {
@@ -41,6 +23,191 @@ footer {
   background: #f9f4ef;
   font-size: 0.9rem;
   color: var(--color-text);
+}
+
+header {
+  position: relative;
+  height: 100vh;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.background-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  background-image: repeating-linear-gradient(45deg,
+      var(--color-primary) 0px,
+      var(--color-primary) 1px,
+      transparent 1px,
+      transparent 20px),
+    repeating-linear-gradient(-45deg,
+      var(--color-primary) 0px,
+      var(--color-primary) 1px,
+      transparent 1px,
+      transparent 20px);
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: var(--color-text);
+  padding: 40px;
+}
+
+.decorative-top-text {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  opacity: 0;
+  animation: fadeIn 1s ease 1s forwards;
+  margin-bottom: 20px;
+}
+
+.main-title {
+  font-family: var(--font-elegant);
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  opacity: 0;
+  animation: fadeInScale 1s ease 1.2s forwards;
+  margin: 30px 0;
+  line-height: 1.3;
+}
+
+.ornamental-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+  opacity: 0;
+  animation: fadeIn 1s ease 1.5s forwards;
+}
+
+.divider-diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  transform: rotate(45deg);
+  margin: 0 15px;
+}
+
+.divider-line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-primary), transparent);
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 300;
+  color: var(--color-primary);
+  opacity: 0;
+  animation: fadeIn 1s ease 1.8s forwards;
+  margin-bottom: 15px;
+}
+
+.invitation-message {
+  font-family: var(--font-elegant);
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--color-text);
+  opacity: 0;
+  animation: fadeIn 1s ease 2s forwards;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.floating-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.leaf {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  opacity: 0.4;
+}
+
+.leaf-1 {
+  top: 20%;
+  left: 15%;
+  animation: floatLeaf 8s ease-in-out infinite;
+}
+
+.leaf-2 {
+  top: 30%;
+  right: 18%;
+  animation: floatLeaf 7s ease-in-out 1s infinite;
+}
+
+.leaf-3 {
+  bottom: 25%;
+  left: 12%;
+  animation: floatLeaf 9s ease-in-out 2s infinite;
+}
+
+.leaf-4 {
+  bottom: 35%;
+  right: 15%;
+  animation: floatLeaf 8.5s ease-in-out 1.5s infinite;
+}
+
+@keyframes floatLeaf {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  75% {
+    transform: translateY(-15px) rotate(-10deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 #principal {
@@ -143,24 +310,38 @@ h1 {
 
 /* Contador Regresivo */
 
+#contador {
+  margin: 60px;
+}
+
+#contador h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  color: var(--color-primary);
+}
+
 .contador-container {
   display: flex;
   justify-content: center;
   gap: 20px;
   text-align: center;
 }
+
 .contador-box {
   border: 2px solid var(--color-primary);
   padding: 20px 30px;
   border-radius: 8px;
   background: #fdfdfd;
 }
+
 .contador-box span {
   font-family: var(--font-elegant);
   font-size: 3rem;
   display: block;
   color: var(--color-dark);
 }
+
 .contador-box p {
   margin: 0;
   font-size: 0.9rem;
@@ -365,6 +546,23 @@ h1 {
 
   .contador-box span {
     font-size: 2.5rem;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+  }
+
+  .decorative-top-text {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .invitation-message {
+    font-size: 1.1rem;
   }
 }
 
