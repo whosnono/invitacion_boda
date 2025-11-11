@@ -12,17 +12,18 @@
   --color-primary: #8b7355; /* Un tono oro viejo / champagne */
   --color-dark: #2a2a2a;
 }
+
 body {
   margin: 0;
 }
 
 footer {
-  margin-top: 20px;
   text-align: center;
   padding: 15px;
   background: #f9f4ef;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   color: var(--color-text);
+  font-family: var(--font-body);
 }
 
 header {
@@ -217,7 +218,6 @@ header {
   align-items: center;
   min-width: 200px;
   position: relative;
-  margin-bottom: 20vh;
 }
 
 /* Invitaciones */
@@ -311,7 +311,11 @@ h1 {
 /* Contador Regresivo */
 
 #contador {
-  margin: 60px;
+  position: relative; /* hace que el .background-pattern se posicione dentro de este bloque */
+  overflow: hidden; /* evita que el patrón sobresalga si usa 100% de altura */
+  background: var(--color-bg); /* fondo blanco base para cubrir toda el área */
+  min-height: 350px; /* altura mínima para que el patrón tenga espacio suficiente */
+  padding-top: 70px;
 }
 
 #contador h2 {
@@ -326,6 +330,18 @@ h1 {
   justify-content: center;
   gap: 20px;
   text-align: center;
+}
+
+/* Asegurar que el patrón quede detrás del contenido del contador */
+#contador .background-pattern {
+  z-index: 0;
+}
+
+#contador h2,
+#contador .contador-container {
+  position: relative;
+  z-index: 1;
+  /* elevar el contenido por encima del patrón */
 }
 
 .contador-box {
@@ -535,6 +551,10 @@ h1 {
     font-size: 3em;
   }
 
+  #contador {
+    padding-top: 200px;
+  }
+
   .contador-container {
     flex-wrap: wrap;
     gap: 10px;
@@ -579,6 +599,7 @@ h1 {
     width: 90vw;
     height: 35vh;
   }
+
   #principal {
     margin: 0 0 15vh 0;
   }
@@ -721,3 +742,188 @@ h1 {
 /* ================================================================
    SECCIÓN "FORMULARIO" - FIN
 ================================================================ */
+
+#musica {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.musica {
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  background: var(--color-bg);
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(139, 115, 85, 0.15);
+  border: 2px solid var(--color-envelope-left);
+  position: relative;
+}
+
+.musica::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: var(--color-envelope-flap);
+}
+
+.musica::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: var(--color-envelope-flap);
+}
+
+.player-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.player-title {
+  font-family: var(--font-elegant);
+  font-size: 1.8rem;
+  color: var(--color-dark);
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.audio-player {
+  display: none;
+}
+
+.custom-player {
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-envelope-right) 100%);
+  border-radius: 10px;
+  padding: 25px;
+  border: 1px solid var(--color-envelope-left);
+}
+
+.song-info {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.song-title {
+  font-family: var(--font-elegant);
+  font-size: 1.2rem;
+  color: var(--color-dark);
+  margin-bottom: 5px;
+}
+
+.song-artist {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.progress-container {
+  margin: 20px 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--color-envelope-left);
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: var(--color-primary);
+  border-radius: 10px;
+  transition: width 0.1s linear;
+}
+
+.progress-bar.active::before {
+  width: var(--progress, 0%);
+}
+
+.time-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.control-btn:hover {
+  background: var(--color-envelope-left);
+  transform: scale(1.1);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+.control-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.play-pause-btn {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  padding: 15px;
+  border: 3px solid var(--color-envelope-flap);
+}
+
+.play-pause-btn:hover {
+  background: var(--color-dark);
+  border-color: var(--color-primary);
+}
+
+.play-pause-btn svg {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 600px) {
+  .musica {
+    padding: 30px 20px;
+  }
+
+  .player-title {
+    font-size: 1.5rem;
+  }
+
+  .controls {
+    gap: 15px;
+  }
+}

@@ -49,6 +49,61 @@
     </header>
   <!-- Main Content -->
   <main>
+    <div id="musica">
+      <div class="background-pattern"></div>
+      <section class="musica">
+        <!-- Header del reproductor -->
+          <div class="player-header">
+              <h3 class="player-title">Nuestra Canción</h3>
+          </div>
+
+          <!-- Audio nativo (oculto) -->
+          <audio class="audio-player" loop preload="auto" id="wedding-audio">
+              <source src="./assets/audio/AThousandYears.mp3" type="audio/mpeg">
+              Tu navegador no soporta la etiqueta de audio.
+          </audio>
+
+          <!-- Reproductor personalizado -->
+          <div class="custom-player">
+
+              <!-- Barra de progreso -->
+              <div class="progress-container">
+                  <div class="progress-bar" id="progress-bar">
+                  </div>
+                  <div class="time-info">
+                      <span id="current-time">0:00</span>
+                      <span id="duration">0:00</span>
+                  </div>
+              </div>
+
+              <!-- Controles -->
+              <div class="controls">
+                  <button class="control-btn" id="prev-btn" title="Anterior">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M19 20L9 12L19 4V20Z"/>
+                          <line x1="5" y1="4" x2="5" y2="20"/>
+                      </svg>
+                  </button>
+
+                  <button class="control-btn play-pause-btn" id="play-pause-btn" title="Reproducir/Pausar">
+                      <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z"/>
+                      </svg>
+                      <svg id="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                          <path d="M6 4h4v16H6zM14 4h4v16h-4z"/>
+                      </svg>
+                  </button>
+
+                  <button class="control-btn" id="next-btn" title="Siguiente">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 4L15 12L5 20V4Z"/>
+                          <line x1="19" y1="4" x2="19" y2="20"/>
+                      </svg>
+                  </button>
+              </div>
+          </div>
+      </section>
+    </div>
     <section id="principal">
     <div class="background-pattern"></div>
       <!--sobresito-->
@@ -94,6 +149,7 @@
       </div>
     </section>
     <section id="contador" class="content-section">
+      <div class="background-pattern"></div>
       <h2>Faltan...</h2>
       <div class="contador-container">
         <div class="contador-box">
@@ -142,11 +198,8 @@
   </main>
   <!-- Footer -->
   <footer>
-    <p>
-      <strong>Integrantes:</strong> Sofia Figueroa, Elda Matus, Jessica
-      Montaño
-    </p>
-    <p><strong>Fecha:</strong> 11 de noviembre de 2025</p>
+    <p><strong>Integrantes:</strong> Sofia Figueroa, Elda Matus, Jessica Montaño</p>
+    <p><strong>Grupo:</strong> 1 | <strong>Fecha:</strong> 11 de noviembre de 2025</p>
   </footer>
   <script src="js/script.js"></script>
 </body>
